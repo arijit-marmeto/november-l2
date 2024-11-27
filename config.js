@@ -9,8 +9,8 @@ const sectionData = {
             description: "",
             buttonLink: "/collections",
             buttonLabel: " Explore More",
-            contentAlign: "left-start | ... 9 positions",
-            textAlign: "center | left | right",
+            contentAlign: "center_center",
+            textAlign: "center",
         },
         {
             type: "slide",
@@ -20,8 +20,8 @@ const sectionData = {
             description: "",
             buttonLink: "/collections",
             buttonLabel: "Shop Now",
-            contentAlign: "left-start | ... 9 positions",
-            textAlign: "center | left | right",
+            contentAlign: "center_left",
+            textAlign: "center",
         },
         {
             type: "slide",
@@ -31,8 +31,8 @@ const sectionData = {
             description: "",
             buttonLink: "/collections",
             buttonLabel: "Explore Now",
-            contentAlign: "left-start | ... 9 positions",
-            textAlign: "center | left | right",
+            contentAlign: "center_right",
+            textAlign: "center",
         },
     ],
 };
@@ -59,11 +59,11 @@ const renderBanner = () => {
         }
         contentElement.innerHTML = `
             <ul>
-                <li>${slide.preHeading}</li>
+                <li >${slide.preHeading}</li>
             </ul>
-            <h2>${slide.heading}</h2>
+            <h2 style="text-align:${slide.textAlign}">${slide.heading}</h2>
             <div>
-                <a href="${slide.buttonLink}" target="_blank" class="button">
+                <a  href="${slide.buttonLink}" target="_blank" class="button">
                     <span>${slide.buttonLabel}</span>
                 </a>
             </div>
@@ -91,3 +91,60 @@ renderBanner();
     });
     splide.mount();
 });
+document.getElementById('dynamicBox').addEventListener('change', function () {
+    const selectedValue = this.value; 
+    const selectedTextAlign = document.getElementById('dynamicText').value; 
+
+    const contentElements = document.querySelectorAll('.splide_content');
+
+   
+    contentElements.forEach(element => {
+        element.classList.remove(
+            'top_left', 'top_center', 'top_right',
+            'center_left', 'center_center', 'center_right',
+            'bottom_left', 'bottom_center', 'bottom_right'
+        );
+    });
+
+    
+    contentElements.forEach(element => {
+        // Set position alignment class
+        switch (selectedValue) {
+            case '1':
+                element.classList.add('top_left');
+                break;
+            case '2':
+                element.classList.add('top_center');
+                break;
+            case '3':
+                element.classList.add('top_right');
+                break;
+            case '4':
+                element.classList.add('center_left');
+                break;
+            case '5':
+                element.classList.add('center_center');
+                break;
+            case '6':
+                element.classList.add('center_right');
+                break;
+            case '7':
+                element.classList.add('bottom_left');
+                break;
+            case '8':
+                element.classList.add('bottom_center');
+                break;
+            case '9':
+                element.classList.add('bottom_right');
+                break;
+            default:
+                break;
+        }
+
+        
+        element.querySelectorAll('h2, ul').forEach(child => {
+            child.style.textAlign = selectedTextAlign;
+        });
+    });
+});
+
