@@ -141,63 +141,68 @@ left: 37%;
 .splide_content.top_left {
     top: 10%; left: 10%;
     transform: translate(0, 0);
-    text-align: left;
     align-items: flex-start;
 }
 
 .splide_content.top_center {
     top: 10%; left: 50%;
     transform: translateX(-50%);
-    text-align: center;
     align-items: center;
 }
 
 .splide_content.top_right {
     top: 10%; right: 10%;
     transform: translate(0, 0);
-    text-align: right;
     align-items: flex-end;
 }
 
 .splide_content.center_left {
     top: 50%; left: 10%;
     transform: translate(0, -50%);
-    text-align: left;
-    align-items: flex-start;
 }
 
 .splide_content.center_center {
     top: 50%; left: 50%;
     transform: translate(-50%, -50%);
-    text-align: center;
-    align-items: center;
 }
 
 .splide_content.center_right {
     top: 50%; right: 10%;
     transform: translate(0, -50%);
-    text-align: right;
-    align-items: flex-end;
 }
 
 .splide_content.bottom_left {
     bottom: 10%; left: 10%;
     transform: translate(0, 0);
-    text-align: left;
-    align-items: flex-start;
 }
 
 .splide_content.bottom_center {
     bottom: 10%; left: 50%;
     transform: translateX(-50%);
-    text-align: center;
-    align-items: center;
 }
 
 .splide_content.bottom_right {
     bottom: 10%; right: 10%;
     transform: translate(0, 0);
+}
+.splide_content.left{
+    align-items: flex-start;
+    
+}
+.splide_content.left h2 {
+    text-align: left;
+}
+.splide_content.center h2 {
+    text-align: center;
+}
+.splide_content.right h2 {
     text-align: right;
+}
+.splide_content.center{
+    align-items: center;
+
+}
+.splide_content.right{
     align-items: flex-end;
 }
 
@@ -244,3 +249,4 @@ left: 37%;
     margin-bottom: 5px;
     text-align: center; 
 }
+

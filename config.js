@@ -50,18 +50,18 @@ const renderBanner = () => {
 
         const contentElement = document.createElement("div");
         contentElement.classList.add("splide_content");
-        if(index==1){
-            contentElement.classList.add("left_start");
-        }
-        if(index==2){
-            contentElement.classList.add("left_center");
+        // if(index==1){
+        //     contentElement.classList.add("left_start");
+        // }
+        // if(index==2){
+        //     contentElement.classList.add("left_center");
 
-        }
+        // }
         contentElement.innerHTML = `
             <ul>
                 <li >${slide.preHeading}</li>
             </ul>
-            <h2 style="text-align:${slide.textAlign}">${slide.heading}</h2>
+            <h2 >${slide.heading}</h2>
             <div>
                 <a  href="${slide.buttonLink}" target="_blank" class="button">
                     <span>${slide.buttonLabel}</span>
@@ -93,6 +93,8 @@ renderBanner();
 });
 document.getElementById('dynamicBox').addEventListener('change', function () {
     const selectedValue = this.value; 
+    console.log(selectedValue);
+    
     const selectedTextAlign = document.getElementById('dynamicText').value; 
 
     const contentElements = document.querySelectorAll('.splide_content');
@@ -142,9 +144,26 @@ document.getElementById('dynamicBox').addEventListener('change', function () {
         }
 
         
-        element.querySelectorAll('h2, ul').forEach(child => {
-            child.style.textAlign = selectedTextAlign;
-        });
+        
     });
 });
 
+document.getElementById('dynamicText').addEventListener('change', function () {
+    const selectedTextAlign = this.value; // Get the selected text alignment (center, left, right)
+console.log(selectedTextAlign);
+
+    // Select all `.splide_content` elements
+    const contentElements = document.querySelectorAll('.splide_content');
+    contentElements.forEach(element => {
+        element.classList.remove(
+            'left','center','right'
+        );
+    });
+    contentElements.forEach(element => {
+        element.classList.add(selectedTextAlign)
+        
+       
+    });
+
+    console.log(`Text alignment changed to: ${selectedTextAlign}`);
+});
